@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sorriso Radiante | Clínica Odontológica</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header id="navbar">
+      <div class="container">
+        <h1 class="logo">Sorriso<span>Radiante</span></h1>
+        <nav>
+          <ul>
+            <li><a href="#home">Início</a></li>
+            <li><a href="#servicos">Tratamentos</a></li>
+            <li><a href="#sobre">Dra. Ana</a></li>
+            <li><a href="#contato" class="btn-nav">Agendar</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section id="home" class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h2>Seu sorriso é a nossa prioridade</h2>
+          <p>
+            Tecnologia avançada e atendimento humanizado para transformar a sua
+            autoestima.
+          </p>
+          <a href="#contato" class="btn-cta">Agendar Avaliação</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="servicos" class="section-padding">
+      <div class="container">
+        <h2 class="section-title">Nossos Tratamentos</h2>
+        <div class="grid-cards">
+          <div class="card">
+            <h3>Clareamento</h3>
+            <p>
+              Técnicas modernas a laser para um sorriso mais branco e brilhante
+              com segurança.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Ortodontia</h3>
+            <p>
+              Aparelhos invisíveis e convencionais para alinhar seu sorriso com
+              discrição.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Implantes</h3>
+            <p>
+              Reabilitação oral completa para você voltar a sorrir com confiança
+              total.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contato" class="section-padding bg-light">
+      <div class="container">
+        <h2 class="section-title">Agende sua Visita</h2>
+        <div class="contact-wrapper">
+          <div class="contact-info">
+            <p><strong>Endereço:</strong> Av. Saúde, 100 - Centro</p>
+            <p><strong>Telefone:</strong> (11) 99999-9999</p>
+            <p><strong>Email:</strong> contato@sorrisoradiante.com.br</p>
+          </div>
+          <div class="form-container">
+            <form
+              id="my-form"
+              class="form-contact"
+              action="https://formspree.io/f/mpwnnzlw"
+              method="POST"
+            >
+              <input type="text" name="nome" placeholder="Seu Nome" required />
+              <input
+                type="email"
+                name="email"
+                placeholder="Seu Email"
+                required
+              />
+              <textarea
+                name="mensagem"
+                placeholder="Como podemos ajudar?"
+                rows="4"
+              ></textarea>
+              <button type="submit" class="btn-cta" id="my-form-button">
+                Enviar Mensagem
+              </button>
+              <p
+                id="my-form-status"
+                style="color: red; display: none; margin-top: 10px"
+              ></p>
+            </form>
+
+            <div
+              id="success-message"
+              style="display: none; text-align: center; padding: 20px"
+            >
+              <h3 style="color: var(--primary-color); font-size: 2rem">✓</h3>
+              <h3 style="color: var(--secondary-color)">Mensagem Enviada!</h3>
+              <p>Obrigado pelo contato. Retornaremos em breve.</p>
+              <button
+                onclick="resetForm()"
+                class="btn-nav"
+                style="margin-top: 15px; border: none; cursor: pointer"
+              >
+                Voltar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>
+        &copy; 2025 Sorriso Radiante. Desenvolvido por William Almeida de Abreu.
+      </p>
+    </footer>
+    <script>
+    var form = document.getElementById("my-form");
+    var status = document.getElementById("my-form-status");
+    var successMsg = document.getElementById("success-message");
+
+    async function handleSubmit(event) {
+        event.preventDefault(); 
+        var data = new FormData(event.target);
+        
+        fetch(event.target.action, {
+            method: form.method,
+            body: data,
+            headers: {
+                'Accept': 'application/json'
+            }
+        }).then(response => {
+            if (response.ok) {
+                
+                form.style.display = "none";
+                successMsg.style.display = "block";
+                form.reset(); 
+            } else {
+                
+                response.json().then(data => {
+                    if (Object.hasOwn(data, 'errors')) {
+                        status.textContent = data["errors"].map(error => error["message"]).join(", ");
+                    } else {
+                        status.textContent = "Oops! Ocorreu um erro ao enviar.";
+                    }
+                    status.style.display = "block";
+                })
+            }
+        }).catch(error => {
+            status.textContent = "Oops! Ocorreu um erro de conexão.";
+            status.style.display = "block";
+        });
+    }
+
+    function resetForm() {
+        successMsg.style.display = "none";
+        form.style.display = "block";
+        status.style.display = "none";
+    }
+
+    form.addEventListener("submit", handleSubmit);
+</script>
+  </body>
+</html>
