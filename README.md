@@ -7,14 +7,6 @@
 
 > Uma solução web moderna, responsiva e focada na conversão de pacientes para consultórios odontológicos.
 
----
-
-## 📸 Preview
-
-<img src="caminho-para-sua-imagem/preview.png" alt="Preview do site Sorriso Radiante" width="100%">
-
----
-
 ## 💻 Sobre o Projeto
 
 Este projeto consiste em uma **Landing Page Institucional** desenvolvida para simular a presença digital de uma clínica odontológica de alto padrão. O objetivo principal foi criar uma interface que transmite **limpeza, profissionalismo e confiança**, elementos essenciais na área da saúde.
