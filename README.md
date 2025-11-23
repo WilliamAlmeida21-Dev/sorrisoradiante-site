@@ -13,6 +13,9 @@ Este projeto consiste em uma **Landing Page Institucional** desenvolvida para si
 
 O desenvolvimento foi focado em **Performance** e **SEO** (Otimização para motores de busca), utilizando HTML semântico e boas práticas de CSS.
 
+🔗 Acesse o projeto online: (sorrisoradiante-site.vercel.app)
+
+
 ### 🌟 Destaques Técnicos
 
 * **Design Responsivo:** Layout fluido que se adapta perfeitamente a celulares, tablets e desktops (Mobile-First approach).
